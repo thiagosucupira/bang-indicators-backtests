@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+yfinance
+pandas
+numpy
+matplotlib
+pydantic
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-jose
+sqlalchemy
+databases
+email-validator
+python-dotenv
+python-multipart
+psycopg2-binary

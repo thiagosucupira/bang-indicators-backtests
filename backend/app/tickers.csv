@@ -1,0 +1,30 @@
+Symbol,Name
+EURUSD=X,Euro/US Dollar
+USDJPY=X,US Dollar/Japanese Yen
+GBPUSD=X,British Pound/US Dollar
+USDCHF=X,US Dollar/Swiss Franc
+AUDUSD=X,Australian Dollar/US Dollar
+NZDUSD=X,New Zealand Dollar/US Dollar
+EURGBP=X,Euro/British Pound
+EURJPY=X,Euro/Japanese Yen
+GBPJPY=X,British Pound/Japanese Yen
+EURCHF=X,Euro/Swiss Franc
+GBPCHF=X,British Pound/Swiss Franc
+AUDJPY=X,Australian Dollar/Japanese Yen
+EURAUD=X,Euro/Australian Dollar
+EURCAD=X,Euro/Canadian Dollar
+AAPL,Apple Inc.
+MSFT,Microsoft Corporation
+AMZN,Amazon.com Inc.
+GOOGL,Alphabet Inc. (Google)
+TSLA,Tesla Inc.
+NVDA,NVIDIA Corporation
+META,Meta Platforms Inc. (Facebook)
+BRK.A,Berkshire Hathaway Inc.
+JPM,JPMorgan Chase & Co.
+JNJ,Johnson & Johnson
+V,Visa Inc.
+WMT,Walmart Inc.
+PG,Procter & Gamble Company
+KO,The Coca-Cola Company
+DIS,The Walt Disney Company
