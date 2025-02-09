@@ -13,7 +13,7 @@ GBPCHF=X,British Pound/Swiss Franc
 AUDJPY=X,Australian Dollar/Japanese Yen
 EURAUD=X,Euro/Australian Dollar
 EURCAD=X,Euro/Canadian Dollar
-AAPL,Apple Inc.
+GC=F,Gold Futures
 MSFT,Microsoft Corporation
 AMZN,Amazon.com Inc.
 GOOGL,Alphabet Inc. (Google)
@@ -28,3 +28,5 @@ WMT,Walmart Inc.
 PG,Procter & Gamble Company
 KO,The Coca-Cola Company
 DIS,The Walt Disney Company
+BTCUSD, Bitcoun
+BTC-USD, Bitcounn
