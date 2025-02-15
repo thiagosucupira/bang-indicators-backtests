@@ -1,43 +1,86 @@
-# Trading Strategies: Fair Value Gap (FVG) and Williams %R
+# Trading Strategies & Backtesting Suite
 
-Hey there! Let's dive into two exciting trading strategies: Fair Value Gap (FVG) and Williams %R.
+## Overview
+This project is designed to backtest and evaluate multiple algorithmic trading strategies. The system includes a diverse set of strategies, integrated performance metrics, risk management tools, and visualization features to provide thorough insights into the potential advantages and pitfalls of each strategy.
 
-## Fair Value Gap (FVG) Strategy
+## Implemented Trading Strategies
 
-This strategy is all about finding and capitalizing on price gaps in the market:
+### 1. Fair Value Gap (FVG) Strategy
+The Fair Value Gap (FVG) strategy identifies price gaps that occur in rapidly moving markets. It capitalizes on the notion that when the price returns to the gap, a potential reversal or continuation may occur.
+- **Entry**: Long for bullish gaps, short for bearish gaps.
+- **Risk Management**: Stop Loss is set at the gap edge; Take Profit is at twice the stop loss distance (2:1 Reward-to-Risk).
 
-- It identifies gaps that form when the market moves quickly, leaving "fair value gaps"
-- When price returns to the middle of a gap, it's considered a potential trade opportunity
-- For bullish gaps, we go long; for bearish gaps, we go short
+### 2. Williams %R Strategy
+The Williams %R strategy uses the Williams %R oscillator to detect overbought/oversold conditions and potential market reversals.
+- **Entry**: Buy when Williams %R crosses above -80; Sell when it crosses below -20.
+- **Risk Management**: Stop Loss based on a one-day price range from the entry price; Take Profit maintains a 2:1 reward-to-risk ratio.
 
-Risk Management:
-- Stop Loss: Set at the edge of the gap. If the price moves beyond this point, the gap is considered "filled," and our trade idea is invalidated.
-- Take Profit: Placed at twice the distance of the stop loss. This 2:1 reward-to-risk ratio aims to ensure our winners outweigh our losers.
+### 3. ATR-Based Strategy
+This strategy employs the Average True Range (ATR) indicator to capture market volatility.
+- **Calculation**: Dynamically sets stop-loss and profit target levels using ATR.
+- **Metrics**: Computes total return, Sharpe Ratio, and maximum drawdown to evaluate performance.
 
-## Williams %R Strategy
+### 4. SMA/EMA Crossover Strategy
+A dual moving average system that uses Simple Moving Average (SMA) and Exponential Moving Average (EMA) crossovers to generate trade signals.
+- **Entry**: Triggered when a fast moving average crosses a slow moving average.
+- **Analysis**: Backtested with cumulative return and drawdown calculations.
 
-This strategy uses the Williams %R indicator to spot potential market reversals:
+### 5. Range Support/Resistance Strategy
+This strategy identifies key support and resistance zones to determine potential breakout or reversal opportunities.
+- **Logic**: Trades based on the detection of supply and demand imbalances within price ranges.
+- **Risk Management**: Incorporates dynamic stop-loss and take-profit levels based on range volatility.
 
-- We buy when Williams %R crosses above -80, suggesting the market might be oversold
-- We sell when Williams %R crosses below -20, indicating the market might be overbought
+### 6. Markov Strategy
+The Markov Strategy applies probabilistic models to analyze transitions in price behavior, offering a unique approach to trading.
+- **Variants**: Includes both standard and detailed implementations.
+- **Integration**: Accessible via API endpoints and a dedicated front-end interface for strategy execution and visualization.
 
-Risk Management:
-- Stop Loss: Set at one day's price range from the entry price. This adapts to the day's volatility, providing a simple yet responsive risk measure.
-- Take Profit: Placed at twice the distance of the stop loss, maintaining our 2:1 reward-to-risk ratio.
+## System Features
 
-Why these levels? The -80 and -20 thresholds are standard for Williams %R, historically good at identifying potential reversals without being too sensitive to minor fluctuations.
+- **Backtesting Engine**: Execute historical analyses across multiple strategies with performance metrics including:
+  - Total Return
+  - Sharpe Ratio
+  - Maximum Drawdown
+  - Win Rate & Profit Factor
 
-## The Power of 2:1 Risk-Reward
+- **Risk Management**: Integrated stop-loss and take-profit mechanisms consistently apply a 2:1 reward-to-risk ratio across strategies.
 
-Both strategies use a 2:1 reward-to-risk ratio. Here's why:
-- It allows us to be profitable even if we're right less than half the time
-- For example, with this ratio, we can make money even with a 40% win rate
-- It helps manage emotions by setting clear exit points before entering a trade
+- **Visualization Tools**: Generate charts and plots to visualize:
+  - Price action and trade signals
+  - Equity curves and performance metrics
 
-## What These Strategies Offer
+- **API Endpoints & Front-End Integration**:
+  - RESTful APIs (e.g., /api/markov-strategy) allow programmatic access to strategy backtests.
+  - An interactive front-end module enables real-time strategy execution and result visualization.
 
-- Backtesting: See how these strategies would have performed in the past
-- Visualization: Get clear, colorful charts showing price action, indicators, and trade signals
-- Performance Metrics: Analyze key stats like total return, max drawdown, win rate, and profit factor
+- **Modular Design**: Separates back-end strategy implementations from front-end interfaces, allowing easy extension and customization.
 
-Remember, while these strategies are fascinating to explore, always approach real trading with caution. Past performance doesn't guarantee future results, and all trading carries risk.
+- **Deployment**:
+  - Docker Compose support for containerized execution.
+  - Environment configuration via .env for flexible setup.
+
+## Installation & Setup
+
+1. Clone the repository.
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Configure your environment variables in the .env file.
+4. Launch the application using Docker Compose:
+   ```
+   docker-compose up
+   ```
+5. Run the back-end server and front-end client as specified in their respective directories.
+
+## Usage
+
+- Backtest strategies via command-line interfaces or API calls.
+- Use the interactive front-end to execute strategies and explore visual data representations.
+- Customize strategy parameters within the codebase for tailored analyses.
+
+## Disclaimer
+This project is for research and educational purposes only. Backtesting results do not guarantee future performance. Trade responsibly and at your own risk.
+
+## Contributing & License
+Contributions are welcome. Please see CONTRIBUTING.md for guidelines. This project is open-sourced under the MIT License.

@@ -38,6 +38,7 @@ from breakout import (
     calculate_range_support_resistance_metrics,
     plot_trades_range_support_resistance
 )
+from markov import run_markov_strategy  # Add this import near the other strategy imports
 
 # Configure logging
 logging.basicConfig(
@@ -159,7 +160,10 @@ def generate_plot(request: PlotRequest, user: User = Depends(get_current_user)):
                     return {"message": "No trades were generated during the backtest."}
             else:
                 return {"message": "No valid ranges found in the specified time period."}
-        
+        elif request.indicator == "Markov":  # New branch for Markov strategy
+            df = fetch_yfinance_data(request.symbol, request.interval, request.start_date, request.end_date)
+            result = run_markov_strategy(df)
+            plot_image = result.get("plotImage")
         else:
             raise ValueError("Unsupported indicator selected.")
         
@@ -206,6 +210,16 @@ async def run_backtest(request: BacktestRequest, user: User = Depends(get_curren
             df = calculate_daily_range(df)
             trades_df = backtest_range_support_resistance_strategy(df)
             metrics = calculate_range_support_resistance_metrics(df, trades_df)
+        
+        elif request.indicator == "Markov":  # New branch for Markov strategy
+            df = fetch_yfinance_data(request.symbol, request.interval, request.start_date, request.end_date)
+            result = run_markov_strategy(df)
+            metrics = result.get("metrics")
+            trades = result.get("trades")
+            if trades:
+                trades_df = pd.DataFrame(trades)
+            else:
+                trades_df = pd.DataFrame()
         
         else:
             raise ValueError("Unsupported indicator selected.")
